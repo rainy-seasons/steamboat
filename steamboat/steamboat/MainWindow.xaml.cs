@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 
 namespace steamboat
@@ -9,25 +8,27 @@ namespace steamboat
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		Steam steam = new Steam();
+
 		public MainWindow()
 		{
 			InitializeComponent();
-			SteamRunning();
-		}
-
-		private void SteamRunning()
-		{
-			Process[] pname = Process.GetProcessesByName("Steam");
-			if (pname.Length == 0)
+			if (steam.IsRunning())
 			{
-				Label_SteamStatus.Foreground = Brushes.Red;
-				Label_SteamStatus.Content = "Offline";
+				Label_SteamStatus.Foreground = Brushes.ForestGreen;
+				Label_SteamStatus.Content    = "online";
 			}
 			else
 			{
-				Label_SteamStatus.Foreground = Brushes.Green;
-				Label_SteamStatus.Content = "Online";
+				Label_SteamStatus.Foreground = Brushes.Red;
+				Label_SteamStatus.Content    = "offline";
 			}
+		}
+
+		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
+		{
+			if (steam.IsRunning())
+				steam.Kill();
 		}
 	}
 }
