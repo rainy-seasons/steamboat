@@ -1,13 +1,14 @@
-﻿using System.Threading;
+﻿using steamboat.WPF;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media;
 
 namespace steamboat
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
 	{
 		Steam steam = new Steam();
 
@@ -41,7 +42,10 @@ namespace steamboat
 
 		private void ListBox_NewAccount(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("Not Yet Implemented.");
+            AddAccount AddWin = new AddAccount();
+            AddWin.Owner = this;
+            AddWin.Show();
+		//	MessageBox.Show("Not Yet Implemented.");
 		}
 	}
 }
