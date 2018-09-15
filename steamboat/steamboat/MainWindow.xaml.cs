@@ -45,7 +45,6 @@ namespace steamboat
             AddAccount AddWin = new AddAccount();
             AddWin.Owner = this;
             AddWin.Show();
-		//	MessageBox.Show("Not Yet Implemented.");
 		}
 	}
 }

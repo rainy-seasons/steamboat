@@ -55,7 +55,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Steam.cs" />
+    <Compile Include="components\SteamAccount.cs" />
+    <Compile Include="components\Steam.cs" />
     <Compile Include="WPF\AddAccount.xaml.cs">
       <DependentUpon>AddAccount.xaml</DependentUpon>
     </Compile>

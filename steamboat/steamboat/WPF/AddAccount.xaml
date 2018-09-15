@@ -12,7 +12,7 @@
         <Label x:Name="label_username" Content="username:&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>
         <Label x:Name="label_username_Copy" Content="password:&#xA;" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="95,71,0,0" VerticalAlignment="Top" Width="109" Background="#FF202129" BorderBrush="#FF854343" Foreground="#FF854343"/>
-        <Button x:Name="button_add" Content="add" HorizontalAlignment="Left" Margin="158,111,0,0" VerticalAlignment="Top" Width="46" Click="button_add_Click" Background="#FF854343" BorderBrush="{x:Null}" FontFamily="Source Code Pro Light" Foreground="White" FontSize="11"/>
+        <Button x:Name="button_add" Content="add" HorizontalAlignment="Left" Margin="158,111,0,0" VerticalAlignment="Top" Width="46" Click="button_add_Click" IsDefault="True" Background="#FF854343" BorderBrush="{x:Null}" FontFamily="Source Code Pro Light" Foreground="White" FontSize="11"/>
 
     </Grid>
 </Window>

@@ -13,7 +13,7 @@
 		<ListBox x:Name="Listbox_Accounts" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="242" Background="#FF202129" BorderBrush="{x:Null}" Foreground="White">
 			<ListBox.ContextMenu>
 				<ContextMenu Background="#FF202129" BorderBrush="{x:Null}">
-					<MenuItem Background="#FF202129" Foreground="White" Header="Add" Click="ListBox_NewAccount"/>
+					<MenuItem Background="#FF202129" Foreground="White" Header="New" Click="ListBox_NewAccount"/>
 				</ContextMenu>
 			</ListBox.ContextMenu>
 		</ListBox>
