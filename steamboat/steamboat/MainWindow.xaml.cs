@@ -55,5 +55,5 @@ namespace steamboat
             AddWin.Owner = this;
             AddWin.Show();
 		}
-	}
+    }
 }
