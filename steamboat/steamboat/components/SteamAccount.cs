@@ -1,6 +1,6 @@
 ﻿namespace steamboat.components
 {
-    class SteamAccount
+    public class SteamAccount
     {
         private string name;
         private string username;

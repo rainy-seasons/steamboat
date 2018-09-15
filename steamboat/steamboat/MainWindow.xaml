@@ -10,7 +10,7 @@
 		<Label x:Name="Label_Steam" Content="steam:&#xA;" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="2,289,0,0" Height="27" Width="60" FontFamily="Source Code Pro Light" RenderTransformOrigin="0,1" Background="#00000000" Foreground="White"/>
 		<Label x:Name="Label_SteamStatus" Content="" HorizontalAlignment="Left" Margin="50,289,0,0" VerticalAlignment="Bottom" FontFamily="{DynamicResource SourceCodeProLight}" Height="27" RenderTransformOrigin="0,1"/>
 		<Button x:Name="button_KillSteam" Content="kill" HorizontalAlignment="Right" Margin="0,0,4,5" VerticalAlignment="Bottom" Width="56" Click="button_KillSteam_Click" RenderTransformOrigin="1,1" Background="#FF854343" BorderBrush="{x:Null}" Foreground="White"/>
-		<ListBox x:Name="Listbox_Accounts" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="242" Background="#FF202129" BorderBrush="{x:Null}" Foreground="White">
+		<ListBox x:Name="Listbox_Accounts" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="235" Background="#FF202129" BorderBrush="{x:Null}" Foreground="White">
 			<ListBox.ContextMenu>
 				<ContextMenu Background="#FF202129" BorderBrush="{x:Null}">
 					<MenuItem Background="#FF202129" Foreground="White" Header="New" Click="ListBox_NewAccount"/>

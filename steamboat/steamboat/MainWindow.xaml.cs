@@ -1,4 +1,6 @@
-﻿using steamboat.WPF;
+﻿using steamboat.components;
+using steamboat.WPF;
+using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
 using System.Windows.Media;
@@ -11,6 +13,7 @@ namespace steamboat
     public partial class MainWindow : Window
 	{
 		Steam steam = new Steam();
+        public List<SteamAccount> AccountList = new List<SteamAccount>();
 
 		public MainWindow()
 		{
@@ -39,6 +42,12 @@ namespace steamboat
 				Label_SteamStatus.Content = "offline";
 			}
 		}
+
+        public void NewAccount(SteamAccount account)
+        {
+            AccountList.Add(account);
+            Listbox_Accounts.Items.Add(account.Name);
+        }
 
 		private void ListBox_NewAccount(object sender, RoutedEventArgs e)
 		{
