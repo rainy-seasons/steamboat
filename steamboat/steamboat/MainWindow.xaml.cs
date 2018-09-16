@@ -55,5 +55,10 @@ namespace steamboat
             AddWin.Owner = this;
             AddWin.Show();
 		}
+
+        private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            //MessageBox.Show(AccountList[Listbox_Accounts.SelectedIndex].Name.ToString() + "\n" + AccountList[Listbox_Accounts.SelectedIndex].Password.ToString());
+        }
     }
 }
