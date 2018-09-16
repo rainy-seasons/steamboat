@@ -13,7 +13,7 @@ namespace steamboat
     public partial class MainWindow : Window
 	{
 		Steam steam = new Steam();
-        public List<SteamAccount> AccountList = new List<SteamAccount>();
+		public List<SteamAccount> AccountList = new List<SteamAccount>();
 
 		public MainWindow()
 		{
@@ -43,22 +43,22 @@ namespace steamboat
 			}
 		}
 
-        public void NewAccount(SteamAccount account)
-        {
-            AccountList.Add(account);
-            Listbox_Accounts.Items.Add(account.Name);
-        }
+		public void NewAccount(SteamAccount account)
+		{
+			AccountList.Add(account);
+			Listbox_Accounts.Items.Add(account.Name);
+		}
 
 		private void ListBox_NewAccount(object sender, RoutedEventArgs e)
 		{
-            AddAccount AddWin = new AddAccount();
-            AddWin.Owner = this;
-            AddWin.Show();
+			AddAccount AddWin = new AddAccount();
+			AddWin.Owner = this;
+			AddWin.Show();
 		}
 
-        private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show(AccountList[Listbox_Accounts.SelectedIndex].Name.ToString() + "\n" + AccountList[Listbox_Accounts.SelectedIndex].Password.ToString());
-        }
-    }
+		private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
+		{
+			//MessageBox.Show(AccountList[Listbox_Accounts.SelectedIndex].Name.ToString() + "\n" + AccountList[Listbox_Accounts.SelectedIndex].Password.ToString());
+		}
+	}
 }

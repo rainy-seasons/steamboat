@@ -2,7 +2,7 @@
 
 namespace steamboat
 {
-	class Steam
+    class Steam
 	{
 		public bool IsRunning()
 		{
