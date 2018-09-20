@@ -73,5 +73,12 @@ namespace steamboat
 				Listbox_Accounts.Items.RemoveAt(Listbox_Accounts.SelectedIndex);
 			}
 		}
+
+		private void Listbox_Accounts_Edit(object sender, RoutedEventArgs e)
+		{
+			EditAccount EditWin = new EditAccount();
+			EditWin.Owner = this;
+			EditWin.Show();
+		}
 	}
 }

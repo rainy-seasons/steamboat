@@ -22,7 +22,7 @@
             <ListBox.Resources>
                 <!-- Context menu when right click on selected List Item -->
                 <ContextMenu x:Key="ItemContextMenu" Background="#FF202129" BorderBrush="{x:Null}">
-                    <MenuItem Header="Edit" Background="#FF202129" Foreground="White"></MenuItem>
+                    <MenuItem Header="Edit" Click="Listbox_Accounts_Edit" Background="#FF202129" Foreground="White"></MenuItem>
                     <MenuItem Header="Delete" Click="Listbox_Accounts_Delete" Background="#FF202129" Foreground="White"></MenuItem>
                 </ContextMenu>
                 <!-- Context menu when right click on listbox space -->

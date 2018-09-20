@@ -17,6 +17,19 @@
             this.password = password;
         }
 
+        public SteamAccount(string name, string username, string password)
+        {
+            this.name = name;
+            this.username = username;
+            this.password = password;
+        }
+
+        public string Username
+        {
+            get { return username; }
+            set { this.username = value; }
+        }
+
         public string Name
         {
             get { return name; }
