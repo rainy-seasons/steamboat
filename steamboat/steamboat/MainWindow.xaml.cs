@@ -58,7 +58,20 @@ namespace steamboat
 
 		private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
 		{
-			//MessageBox.Show(AccountList[Listbox_Accounts.SelectedIndex].Name.ToString() + "\n" + AccountList[Listbox_Accounts.SelectedIndex].Password.ToString());
+            MessageBox.Show("Switching accounts not yet implemented.");
 		}
+
+        private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure?", 
+                string.Format("Delete {0}?", AccountList[Listbox_Accounts.SelectedIndex].Name),
+                MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                AccountList.RemoveAt(Listbox_Accounts.SelectedIndex);
+                Listbox_Accounts.Items.RemoveAt(Listbox_Accounts.SelectedIndex);
+            }
+        }
 	}
 }

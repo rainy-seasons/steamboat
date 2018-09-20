@@ -1,5 +1,5 @@
 ﻿using steamboat.components;
-using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace steamboat.WPF
@@ -25,17 +25,13 @@ namespace steamboat.WPF
             else
             {
                 MessageBox.Show("Please enter a valid username and password.");
-                this.Close();
             }
         }
 
         private bool TestString(string str)
         {
-            if (!str.All(c => char.IsLetterOrDigit(c)) || str.Length < 2)
-            {
-                return false;
-            }
-            return true;
+            // Only allow alphanumerics and spaces
+            return Regex.IsMatch(str, @"^[A-Za-z0-9\s@]*$");
         }
     }
 }
