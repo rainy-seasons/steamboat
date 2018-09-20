@@ -10,6 +10,9 @@ namespace steamboat.WPF
         public EditAccount()
         {
             InitializeComponent();
+            MainWindow MW = ((MainWindow)Application.Current.MainWindow);
+            tb_username.Text = MW.AccountList[MW.Listbox_Accounts.SelectedIndex].Name;
+            passwordBox.Password = MW.AccountList[MW.Listbox_Accounts.SelectedIndex].Password;
         }
 
         private void button_save_Click(object sender, RoutedEventArgs e)
