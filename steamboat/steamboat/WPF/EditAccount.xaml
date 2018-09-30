@@ -8,9 +8,6 @@
         Title="Edit Account" Height="170" Width="260"
         WindowStartupLocation="CenterOwner">
     <Grid Background="#FF202129">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
         <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="18" Margin="102,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" FontFamily="Source Code Pro Light" FontSize="11" Background="#FF202129" BorderBrush="#FF854343" Foreground="White"/>
         <Label x:Name="label_username" Content="username:&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>
         <Label x:Name="label_password" Content="password:&#xA;" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>

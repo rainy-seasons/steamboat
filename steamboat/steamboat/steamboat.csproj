@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="components\SteamAccount.cs" />
     <Compile Include="components\Steam.cs" />
+    <Compile Include="Utils\Extensions.cs" />
     <Compile Include="WPF\AddAccount.xaml.cs">
       <DependentUpon>AddAccount.xaml</DependentUpon>
     </Compile>

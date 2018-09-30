@@ -19,6 +19,7 @@ namespace steamboat
 		{
 			InitializeComponent();
 			CheckSteam();
+			//steam.SetPath();
 		}
 
 		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
