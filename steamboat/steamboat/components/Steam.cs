@@ -1,11 +1,14 @@
-﻿using steamboat.Utils;
+﻿using Microsoft.Win32;
+using steamboat.Utils;
 using System.Diagnostics;
+using System.Windows;
 
 namespace steamboat
 {
 	class Steam
 	{
 		string steamPath;
+		Process steamProc;
 
 		public string SteamPath
 		{
@@ -13,15 +16,33 @@ namespace steamboat
 			set { steamPath = value; }
 		}
 
+		public void CheckPath()
+		{
+			if (string.IsNullOrEmpty(Properties.Settings.Default["SteamPath"].ToString()))
+			{
+				SetPath();
+			}
+			else
+			{
+				steamPath = Properties.Settings.Default["SteamPath"].ToString();
+			}
+		}
+
 		public void SetPath()
 		{
 			if (IsRunning())
 			{
-				var proc = Process.GetProcessesByName("Steam")[0];
-				SteamPath = proc.GetMainModuleFileName();
+				SteamPath = steamProc.GetMainModuleFileName();
+				Properties.Settings.Default["SteamPath"] = SteamPath;
+				Properties.Settings.Default.Save();
 			}
-
-			//this.steamPath = path;
+			else
+			{
+				MessageBox.Show("Could not find steam.\nPlease navigate to and provide Steam.exe");
+				OpenFileDialog ofd = new OpenFileDialog();
+				if (ofd.ShowDialog() == true)
+					Properties.Settings.Default["SteamPath"] = ofd.FileName;
+			}
 		}
 
 		public bool IsRunning()
@@ -29,13 +50,13 @@ namespace steamboat
 			Process[] proc = Process.GetProcessesByName("Steam");
 			if (proc.Length == 0)
 				return false;
+			steamProc = proc[0];
 			return true;
 		}
 
 		public void Kill()
 		{
-			Process[] proc = Process.GetProcessesByName("Steam");
-			proc[0].Kill();
+			steamProc.Kill();
 		}
 	}
 }

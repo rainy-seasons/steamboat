@@ -7,10 +7,10 @@ using System.Windows.Media;
 
 namespace steamboat
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
 	{
 		Steam steam = new Steam();
 		public List<SteamAccount> AccountList = new List<SteamAccount>();
@@ -19,7 +19,7 @@ namespace steamboat
 		{
 			InitializeComponent();
 			CheckSteam();
-			//steam.SetPath();
+			steam.CheckPath();
 		}
 
 		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
