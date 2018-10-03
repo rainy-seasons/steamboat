@@ -1,45 +1,69 @@
-﻿namespace steamboat.components
+﻿using steamboat.Utils;
+using System;
+using System.Security;
+
+namespace steamboat.components
 {
     public class SteamAccount
     {
-        private string name;
-        private string username;
-        private string password;
+        public string Name { get; set; }
+        public string Username { get; set; }
+
+        public byte[] Iv { get; set; }
+        public SecureString SecurePassword { get; set; }
 
         public SteamAccount()
         {
+            Iv = Crypto.GetNewEntropy();
         }
 
-        public SteamAccount(string username, string password)
+        public SteamAccount(string username, SecureString password)
         {
-            this.name = username;
-            this.username = username;
-            this.password = password;
+            Name = username;
+            Username = username;
+            SecurePassword = password;
+            Iv = Crypto.GetNewEntropy();
         }
 
-        public SteamAccount(string name, string username, string password)
+        public SteamAccount(string name, string username, SecureString password)
         {
-            this.name = name;
-            this.username = username;
-            this.password = password;
+            Name = name;
+            Username = username;
+            SecurePassword = password;
+            Iv = Crypto.GetNewEntropy();
         }
 
-        public string Username
+        public string EncryptedPassword
         {
-            get { return username; }
-            set { this.username = value; }
+            get
+            {
+                // use the random iv to encrypt the password
+                return Crypto.EncryptString(SecurePassword, Iv);
+            }
         }
 
-        public string Name
+        /// <summary>
+        /// Base64 encoded IV.
+        /// Be sure to store this - need original IV to decrypt password
+        /// </summary>
+        public string EncodedIv
         {
-            get { return name; }
-            set { this.name = value; }
+            get
+            {
+                return Convert.ToBase64String(Iv);
+            }
         }
 
-        public string Password
+        /// <summary>
+        /// Example of decrypting password.
+        /// </summary>
+        public string DecryptedPassword
         {
-            get { return password; }
-            set { this.password = value; }
+            get
+            {
+                // use the original iv to decrypt the password
+                return Crypto.DecryptString(EncryptedPassword, Iv);
+            }
         }
     }
 }

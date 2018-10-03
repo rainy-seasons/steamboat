@@ -18,7 +18,7 @@ namespace steamboat.WPF
         {
             if (TestString(tb_username.Text) && TestString(passwordBox.Password.ToString()))
             {
-                SteamAccount Account = new SteamAccount(tb_username.Text, passwordBox.Password.ToString());
+                SteamAccount Account = new SteamAccount(tb_username.Text, passwordBox.SecurePassword);
                 ((MainWindow)Application.Current.MainWindow).NewAccount(Account);
                 this.Close();
             }
