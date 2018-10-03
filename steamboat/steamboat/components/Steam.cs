@@ -32,7 +32,8 @@ namespace steamboat
 		{
 			if (IsRunning())
 			{
-				SteamPath = steamProc.GetMainModuleFileName();
+                // SteamPath = steamProc.GetMainModuleFileName();
+                SteamPath = steamProc.MainModule.FileName;
 				Properties.Settings.Default["SteamPath"] = SteamPath;
 				Properties.Settings.Default.Save();
 			}
