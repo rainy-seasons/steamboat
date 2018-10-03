@@ -1,4 +1,5 @@
 ﻿using steamboat.components;
+using steamboat.Utils;
 using steamboat.WPF;
 using System.Collections.Generic;
 using System.Threading;
@@ -20,6 +21,7 @@ namespace steamboat
 			InitializeComponent();
 			CheckSteam();
 			steam.CheckPath();
+            Crypto.GetNewEntropy();
 		}
 
 		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
