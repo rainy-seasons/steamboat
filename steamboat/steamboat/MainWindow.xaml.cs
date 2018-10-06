@@ -77,9 +77,9 @@ namespace steamboat
 				throw new InvalidOperationException("ListBoxItem not found");
 			}
 
-			var account = AccountList.First(ac => ac.Name.Equals((string) listBoxItem.Content));
+			var account = AccountList.First(ac => ac.Username.Equals((string) listBoxItem.Content));
 
-			steam.Run(account.Name, account.DecryptedPassword);
+			steam.Run(account.Username, account.DecryptedPassword);
 		}
 
 		private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
