@@ -10,9 +10,9 @@ namespace steamboat.Utils
             var parent = VisualTreeHelper.GetParent(dependencyObject);
             while (parent != null)
             {
-                if (parent is T result)
+                if (parent is T)
                 {
-                    return result;
+                    return (T)parent;
                 }
 
                 parent = VisualTreeHelper.GetParent(parent);

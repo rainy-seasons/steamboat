@@ -1,7 +1,7 @@
-﻿using System;
-using steamboat.components;
+﻿using steamboat.components;
 using steamboat.Utils;
 using steamboat.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -24,7 +24,7 @@ namespace steamboat
 			InitializeComponent();
 			CheckSteam();
 			steam.CheckPath();
-            Crypto.GetNewEntropy();
+			Crypto.GetNewEntropy();
 		}
 
 		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
@@ -64,22 +64,22 @@ namespace steamboat
 
 		private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
 		{
-		    if (steam.IsRunning())
-		    {
-                steam.Kill();
-                Thread.Sleep(200);
-		    }
+			if (steam.IsRunning())
+			{
+				steam.Kill();
+				Thread.Sleep(200);
+			}
 
-		    var listBoxItem = VisualTreeHelpers.FindParent<ListBoxItem>((DependencyObject) e.OriginalSource);
+			var listBoxItem = VisualTreeHelpers.FindParent<ListBoxItem>((DependencyObject) e.OriginalSource);
 
-		    if (listBoxItem == null)
-		    {
-                throw new InvalidOperationException("ListBoxItem not found");
-		    }
+			if (listBoxItem == null)
+			{
+				throw new InvalidOperationException("ListBoxItem not found");
+			}
 
-		    var account = AccountList.First(ac => ac.Name.Equals((string) listBoxItem.Content));
+			var account = AccountList.First(ac => ac.Name.Equals((string) listBoxItem.Content));
 
-            steam.Run(account.Name, account.DecryptedPassword);
+			steam.Run(account.Name, account.DecryptedPassword);
 		}
 
 		private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
