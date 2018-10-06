@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System;
+using Microsoft.Win32;
 using steamboat.Utils;
 using System.Diagnostics;
 using System.Windows;
@@ -59,5 +60,17 @@ namespace steamboat
 		{
 			steamProc.Kill();
 		}
+
+	    public void Run(string username, string password)
+	    {
+	        if (IsRunning())
+	        {
+                throw new InvalidOperationException("Steam is already running");
+	        }
+
+            CheckPath();
+
+	        Process.Start(SteamPath, $"-login {username} {password}");
+	    }
 	}
 }

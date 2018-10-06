@@ -1,9 +1,12 @@
-﻿using steamboat.components;
+﻿using System;
+using steamboat.components;
 using steamboat.Utils;
 using steamboat.WPF;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace steamboat
@@ -61,7 +64,22 @@ namespace steamboat
 
 		private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
 		{
-			MessageBox.Show("Switching accounts not yet implemented.");
+		    if (steam.IsRunning())
+		    {
+                steam.Kill();
+                Thread.Sleep(200);
+		    }
+
+		    var listBoxItem = VisualTreeHelpers.FindParent<ListBoxItem>((DependencyObject) e.OriginalSource);
+
+		    if (listBoxItem == null)
+		    {
+                throw new InvalidOperationException("ListBoxItem not found");
+		    }
+
+		    var account = AccountList.First(ac => ac.Name.Equals((string) listBoxItem.Content));
+
+            steam.Run(account.Name, account.DecryptedPassword);
 		}
 
 		private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
