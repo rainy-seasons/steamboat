@@ -1,8 +1,8 @@
-﻿using steamboat.Utils;
+﻿using Steamboat.Utils;
 using System;
 using System.Security;
 
-namespace steamboat.components
+namespace Steamboat.Components
 {
     public class SteamAccount
     {

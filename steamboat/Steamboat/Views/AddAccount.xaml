@@ -1,9 +1,9 @@
-﻿<Window x:Class="steamboat.WPF.AddAccount"
+﻿<Window x:Class="Steamboat.Views.AddAccount"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:steamboat.WPF"
+        xmlns:local="clr-namespace:Steamboat.Views"
         mc:Ignorable="d"
         Title="AddAccount" Height="170" Width="260"
         WindowStartupLocation="CenterOwner">

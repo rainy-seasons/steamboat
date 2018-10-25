@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.Win32;
-using steamboat.Utils;
 using System.Diagnostics;
 using System.Windows;
 
-namespace steamboat
+namespace Steamboat.Components
 {
 	class Steam
 	{

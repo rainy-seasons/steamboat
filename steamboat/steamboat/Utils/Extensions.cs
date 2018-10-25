@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 
-namespace steamboat.Utils
+namespace Steamboat.Utils
 {
     internal static class Extensions
     {

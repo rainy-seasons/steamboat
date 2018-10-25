@@ -1,6 +1,5 @@
-﻿using steamboat.components;
-using steamboat.Utils;
-using steamboat.WPF;
+﻿using Steamboat.Components;
+using Steamboat.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace steamboat
+namespace Steamboat.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml

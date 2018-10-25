@@ -4,7 +4,7 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace steamboat.Utils
+namespace Steamboat.Utils
 {
     static class Crypto
     {

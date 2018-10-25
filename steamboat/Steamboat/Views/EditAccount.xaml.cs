@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace steamboat.WPF
+namespace Steamboat.Views
 {
     /// <summary>
     /// Interaction logic for EditAccount.xaml
