@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Media;
 
-namespace steamboat.Utils
+namespace Steamboat.Utils
 {
     public static class VisualTreeHelpers
     {
