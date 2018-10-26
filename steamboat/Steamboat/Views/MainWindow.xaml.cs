@@ -59,7 +59,7 @@ namespace Steamboat.Views
                 throw new InvalidOperationException("ListBoxItem not found");
             }
 
-            var account = App.Controller.Accounts.First(ac => ac.Username.Equals(((SteamAccount)listBoxItem.Content).Name));
+            var account = App.Controller.Accounts.First(ac => ac.Username.Equals(((SteamAccount)listBoxItem.Content).Username));
             string decryptedPassword = Crypto.DecryptString(account.EncryptedPassword, account.Iv);
             steam.Run(account.Username, decryptedPassword);
         }
