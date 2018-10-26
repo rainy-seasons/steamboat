@@ -1,4 +1,4 @@
-# Steam account switcher
+# Steamboat
 
 Tool for switching between steam accounts easily. 
 
@@ -29,7 +29,7 @@ To add an account you should clicked "Add Account" and write your data.
 
 ## Disclamer
 
-> ### Steam account switcher does not send or store the accounts in another repository. All accounts saved with this app are stored in a local database.
+> ### Steamboat does not send or store the accounts in another repository. All accounts saved with this app are stored in a local database.
 
 
 ## License
