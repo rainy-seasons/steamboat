@@ -1,4 +1,5 @@
-﻿using Steamboat.Utils;
+﻿using SQLite;
+using Steamboat.Utils;
 using System;
 using System.Security;
 
@@ -6,12 +7,6 @@ namespace Steamboat.Components
 {
     public class SteamAccount
     {
-        public string Name { get; set; }
-        public string Username { get; set; }
-
-        public byte[] Iv { get; set; }
-        public SecureString SecurePassword { get; set; }
-
         public SteamAccount()
         {
             Iv = Crypto.GetNewEntropy();
@@ -33,37 +28,17 @@ namespace Steamboat.Components
             Iv = Crypto.GetNewEntropy();
         }
 
-        public string EncryptedPassword
-        {
-            get
-            {
-                // use the random iv to encrypt the password
-                return Crypto.EncryptString(SecurePassword, Iv);
-            }
-        }
+        public string EncryptedPassword { get; set; }
 
-        /// <summary>
-        /// Base64 encoded IV.
-        /// Be sure to store this - need original IV to decrypt password
-        /// </summary>
-        public string EncodedIv
-        {
-            get
-            {
-                return Convert.ToBase64String(Iv);
-            }
-        }
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
-        /// <summary>
-        /// Example of decrypting password.
-        /// </summary>
-        public string DecryptedPassword
-        {
-            get
-            {
-                // use the original iv to decrypt the password
-                return Crypto.DecryptString(EncryptedPassword, Iv);
-            }
-        }
+        public byte[] Iv { get; set; }
+        public string Name { get; set; }
+
+        [Ignore]
+        public SecureString SecurePassword { get; set; }
+
+        public string Username { get; set; }
     }
 }

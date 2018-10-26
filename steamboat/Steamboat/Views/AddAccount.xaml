@@ -3,16 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Steamboat.Controls"
         xmlns:local="clr-namespace:Steamboat.Views"
         mc:Ignorable="d"
-        Title="AddAccount" Height="170" Width="260"
+        Title="AddAccount" Height="200" Width="260"
+        x:Name="AddAccountView"
         WindowStartupLocation="CenterOwner">
     <Grid Background="#FF202129">
-        <TextBox x:Name="tb_username" HorizontalAlignment="Left" Height="18" Margin="95,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" FontFamily="Source Code Pro Light" FontSize="11" Background="#FF202129" BorderBrush="#FF854343" Foreground="White"/>
-        <Label x:Name="label_username" Content="username:&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>
-        <Label x:Name="label_username_Copy" Content="password:&#xA;" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="95,71,0,0" VerticalAlignment="Top" Width="109" Background="#FF202129" BorderBrush="#FF854343" Foreground="#FF854343"/>
-        <Button x:Name="button_add" Content="add" HorizontalAlignment="Left" Margin="158,111,0,0" VerticalAlignment="Top" Width="46" Click="button_add_Click" IsDefault="True" Background="#FF854343" BorderBrush="{x:Null}" FontFamily="Source Code Pro Light" Foreground="White" FontSize="11"/>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Content="Create Account" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Foreground="White" FontFamily="Source Code Pro Light" FontSize="15" />
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name account :&#xD;&#xA;" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11" />
+                <TextBox Text="{Binding Name}" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Center" Width="109" FontFamily="Source Code Pro Light" FontSize="11" Background="#FF202129" BorderBrush="#FF854343" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Username :&#xD;&#xA;" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11" />
+                <TextBox Text="{Binding UserName}" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Center" Width="109" FontFamily="Source Code Pro Light" FontSize="11" Background="#FF202129" BorderBrush="#FF854343" Foreground="White" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Password :&#xD;&#xA;" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11" />
+                <PasswordBox controls:PasswordBoxBindable.BindPassword="True" controls:PasswordBoxBindable.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" Width="109" Background="#FF202129" BorderBrush="#FF854343" Foreground="#FF854343" />
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Row="2" Content="add" HorizontalAlignment="Right" Margin="0,0,20,5" VerticalAlignment="Bottom" Width="46" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=AddAccountView}" IsDefault="True" Background="#FF854343" BorderBrush="{x:Null}" FontFamily="Source Code Pro Light" Foreground="White" FontSize="11" />
     </Grid>
 </Window>

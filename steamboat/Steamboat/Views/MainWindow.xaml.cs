@@ -1,5 +1,6 @@
 ﻿using Steamboat.Components;
 using Steamboat.Utils;
+using Steamboat.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,95 +11,57 @@ using System.Windows.Media;
 
 namespace Steamboat.Views
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		Steam steam = new Steam();
-		public List<SteamAccount> AccountList = new List<SteamAccount>();
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            DataContext = vm = new MainWindowViewModel();
+        }
 
-		public MainWindow()
-		{
-			InitializeComponent();
-			CheckSteam();
-			steam.CheckPath();
-			Crypto.GetNewEntropy();
-		}
+        private Steam steam = new Steam();
+        private MainWindowViewModel vm;
 
-		private void button_KillSteam_Click(object sender, RoutedEventArgs e)
-		{
-			if (steam.IsRunning())
-				steam.Kill();
-			Thread.Sleep(200);
-			CheckSteam();
-		}
+        private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure?",
+                string.Format("Delete {0}?", App.Controller.Accounts[Listbox_Accounts.SelectedIndex].Name),
+                MessageBoxButton.YesNo);
 
-		private void CheckSteam()
-		{
-			if (steam.IsRunning())
-			{
-				Label_SteamStatus.Foreground = Brushes.ForestGreen;
-				Label_SteamStatus.Content = "running";
-			}
-			else
-			{
-				Label_SteamStatus.Foreground = Brushes.Red;
-				Label_SteamStatus.Content = "offline";
-			}
-		}
+            if (result == MessageBoxResult.Yes)
+            {
+                App.Controller.RemoveAccount(App.Controller.Accounts[Listbox_Accounts.SelectedIndex]);
+            }
+        }
 
-		public void NewAccount(SteamAccount account)
-		{
-			AccountList.Add(account);
-			Listbox_Accounts.Items.Add(account.Name);
-		}
+        private void Listbox_Accounts_Edit(object sender, RoutedEventArgs e)
+        {
+            EditAccount EditWin = new EditAccount();
+            EditWin.Owner = this;
+            EditWin.Show();
+        }
 
-		private void ListBox_NewAccount(object sender, RoutedEventArgs e)
-		{
-			AddAccount AddWin = new AddAccount();
-			AddWin.Owner = this;
-			AddWin.Show();
-		}
+        private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
+        {
+            if (steam.IsRunning())
+            {
+                steam.Kill();
+                Thread.Sleep(200);
+            }
 
-		private void Listbox_Accounts_MouseDoubleClick(object sender, RoutedEventArgs e)
-		{
-			if (steam.IsRunning())
-			{
-				steam.Kill();
-				Thread.Sleep(200);
-			}
+            var listBoxItem = VisualTreeHelpers.FindParent<ListBoxItem>((DependencyObject)e.OriginalSource);
 
-			var listBoxItem = VisualTreeHelpers.FindParent<ListBoxItem>((DependencyObject) e.OriginalSource);
+            if (listBoxItem == null)
+            {
+                throw new InvalidOperationException("ListBoxItem not found");
+            }
 
-			if (listBoxItem == null)
-			{
-				throw new InvalidOperationException("ListBoxItem not found");
-			}
-
-			var account = AccountList.First(ac => ac.Username.Equals((string) listBoxItem.Content));
-
-			steam.Run(account.Username, account.DecryptedPassword);
-		}
-
-		private void Listbox_Accounts_Delete(object sender, RoutedEventArgs e)
-		{
-			MessageBoxResult result = MessageBox.Show("Are you sure?", 
-				string.Format("Delete {0}?", AccountList[Listbox_Accounts.SelectedIndex].Name),
-				MessageBoxButton.YesNo);
-
-			if (result == MessageBoxResult.Yes)
-			{
-				AccountList.RemoveAt(Listbox_Accounts.SelectedIndex);
-				Listbox_Accounts.Items.RemoveAt(Listbox_Accounts.SelectedIndex);
-			}
-		}
-
-		private void Listbox_Accounts_Edit(object sender, RoutedEventArgs e)
-		{
-			EditAccount EditWin = new EditAccount();
-			EditWin.Owner = this;
-			EditWin.Show();
-		}
-	}
+            var account = App.Controller.Accounts.First(ac => ac.Username.Equals(((SteamAccount)listBoxItem.Content).Name));
+            string decryptedPassword = Crypto.DecryptString(account.EncryptedPassword, account.Iv);
+            steam.Run(account.Username, decryptedPassword);
+        }
+    }
 }

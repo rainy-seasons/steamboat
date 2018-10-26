@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Steamboat.ViewModels;
+using System.Windows;
 
 namespace Steamboat.Views
 {
@@ -7,24 +8,12 @@ namespace Steamboat.Views
     /// </summary>
     public partial class EditAccount : Window
     {
-        const string _fakePassword = "12345678";
-
         public EditAccount()
         {
             InitializeComponent();
-            MainWindow MW = ((MainWindow)Application.Current.MainWindow);
-            tb_username.Text = MW.AccountList[MW.Listbox_Accounts.SelectedIndex].Name;
-            passwordBox.Password = _fakePassword;
+            DataContext = vm = new EditAccountViewModel();
         }
 
-        private void button_save_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow MW = ((MainWindow)Application.Current.MainWindow);
-            MW.AccountList[MW.Listbox_Accounts.SelectedIndex].Name = tb_name.Text;
-            MW.AccountList[MW.Listbox_Accounts.SelectedIndex].Username = tb_username.Text;
-            MW.AccountList[MW.Listbox_Accounts.SelectedIndex].SecurePassword = passwordBox.SecurePassword;
-            MW.Listbox_Accounts.Items[MW.Listbox_Accounts.SelectedIndex] = tb_name.Text;
-            this.Close();
-        }
+        private EditAccountViewModel vm;
     }
 }

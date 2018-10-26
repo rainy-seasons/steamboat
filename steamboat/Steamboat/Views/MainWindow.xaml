@@ -3,45 +3,105 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:Steamboat.Converters"
 		xmlns:local="clr-namespace:Steamboat"
 		mc:Ignorable="d"
-		Title="Steamboat" Height="400" Width="250" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" FontFamily="Source Code Pro">
-    <StackPanel Orientation="Vertical" Background="#FF202129">
-        <Button x:Name="button_AddAcount" Content="Add Account" HorizontalAlignment="Center" Margin="0,0,4,5" VerticalAlignment="Bottom" Width="100" Click="ListBox_NewAccount" RenderTransformOrigin="1,1" Background="Green" BorderBrush="{x:Null}" Foreground="White"/>
-        <Grid>
-            <Label x:Name="Label_Steam" Content="steam:&#xA;" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="2,289,0,0" Height="27" Width="60" FontFamily="Source Code Pro Light" RenderTransformOrigin="0,1" Background="#00000000" Foreground="White"/>
-            <Label x:Name="Label_SteamStatus" Content="" HorizontalAlignment="Left" Margin="50,289,0,0" VerticalAlignment="Bottom" FontFamily="{DynamicResource SourceCodeProLight}" Height="27" RenderTransformOrigin="0,1"/>
-            <Button x:Name="button_KillSteam" Content="kill" HorizontalAlignment="Right" Margin="0,0,4,5" VerticalAlignment="Bottom" Width="56" Click="button_KillSteam_Click" RenderTransformOrigin="1,1" Background="#FF854343" BorderBrush="{x:Null}" Foreground="White"/>
-            <ListBox x:Name="Listbox_Accounts" ListBoxItem.MouseDoubleClick="Listbox_Accounts_MouseDoubleClick" HorizontalAlignment="Left" Height="284" VerticalAlignment="Top" Width="235" Background="#FF202129" BorderBrush="{x:Null}" Foreground="White" FontFamily="Source Code Pro">
-                <!-- Listbox item borders. 
-                <ListBox.ItemContainerStyle>
-                <Style TargetType="ListBoxItem">
-                    <Setter Property="BorderThickness" Value="0.5"/>
-                    <Setter Property="BorderBrush" Value="#FF854343"/>
-                    <Setter Property="Margin" Value="3"/>
-                </Style>
-            </ListBox.ItemContainerStyle> -->
+		Title="Steam account switcher" Height="420" Width="400" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen" FontFamily="Source Code Pro"
+        x:Name="MainView">
+    <Window.Resources>
+        <converters:ForegroundStatusConverter x:Key="ForegroundStatusConverter" />
+    </Window.Resources>
+    <StackPanel Orientation="Vertical"
+                Background="#FF202129">
+        <Label Content="Steam account switcher"
+               HorizontalContentAlignment="Center"
+               Height="Auto"
+               Width="Auto"
+               FontSize="25"
+               FontFamily="Source Code Pro Light"
+               Background="#00000000" Foreground="White" />
+        <DockPanel Margin="10">
+            <StackPanel
+                DockPanel.Dock="Right"
+                Width="100"
+                Margin="10,0">
+                <Button
+                    Content="Add Account"
+                    VerticalAlignment="Bottom"
+                    Width="Auto"
+                    Command="{Binding ShowAddViewCommand}"
+                    CommandParameter="{Binding ElementName=MainView}"
+                    Background="Green"
+                    Foreground="White" />
+            </StackPanel>
+            <ListBox
+                x:Name="Listbox_Accounts"
+                ListBoxItem.MouseDoubleClick="Listbox_Accounts_MouseDoubleClick"
+                HorizontalAlignment="Left"
+                Height="284"
+                VerticalAlignment="Top"
+                Width="240"
+                Background="#FF202129"
+                Foreground="White"
+                ItemsSource="{Binding Accounts}"
+                FontFamily="Source Code Pro">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="20" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Name}" />
+                            <TextBlock Grid.Column="2" Text="{Binding Username}" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
                 <ListBox.Resources>
                     <!-- Context menu when right click on selected List Item -->
-                    <ContextMenu x:Key="ItemContextMenu" Background="#FF202129" BorderBrush="{x:Null}">
-                        <MenuItem Header="Edit" Click="Listbox_Accounts_Edit" Background="#FF202129" Foreground="White"></MenuItem>
-                        <MenuItem Header="Delete" Click="Listbox_Accounts_Delete" Background="#FF202129" Foreground="White"></MenuItem>
-                    </ContextMenu>
-                    <!-- Context menu when right click on listbox space -->
-                    <ContextMenu x:Key="ListContextMenu" Background="#FF202129" BorderBrush="{x:Null}">
-                        <MenuItem Header="Add" Click="ListBox_NewAccount" Background="#FF202129" Foreground="White"></MenuItem>
+                    <ContextMenu
+                        x:Key="ItemContextMenu"
+                        Background="#FF202129">
+                        <MenuItem
+                            Header="Edit"
+                            ItemsSource="{Binding Path=TestViewModel}"
+                            Background="#FF202129"
+                            Foreground="White"
+                            Click="Listbox_Accounts_Edit" />
+                        <MenuItem
+                            Header="Delete"
+                            Background="#FF202129"
+                            Foreground="White"
+                            Click="Listbox_Accounts_Delete" />
                     </ContextMenu>
                     <!-- Applying context menu to ListBoxItem with Style -->
                     <Style TargetType="{x:Type ListBoxItem}">
-                        <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}"/>
+                        <Setter Property="ContextMenu" Value="{StaticResource ItemContextMenu}" />
                     </Style>
                 </ListBox.Resources>
-
-                <ListBox.ContextMenu>
-                    <Binding Source="{StaticResource ListContextMenu}"></Binding>
-                </ListBox.ContextMenu>
             </ListBox>
-        </Grid>
+        </DockPanel>
+        <StackPanel
+            Orientation="Horizontal"
+            Height="Auto"
+            HorizontalAlignment="Left"
+            Width="Auto">
+            <Label Content="Steam:&#xA;"
+                   Height="27"
+                   FontFamily="Source Code Pro Light"
+                   Background="#00000000"
+                   Foreground="White" />
+            <Label Content="{Binding Status}"
+                   Foreground="{Binding Status, Converter={StaticResource ForegroundStatusConverter}}"
+                   FontFamily="{DynamicResource SourceCodeProLight}"
+                   Height="Auto" />
+            <Button Content="Kill"
+                    VerticalAlignment="Center"
+                    Width="50"
+                    Command="{Binding KillProcessCommand}"
+                    Background="#FF854343"
+                    Foreground="White" />
+        </StackPanel>
     </StackPanel>
-	
 </Window>

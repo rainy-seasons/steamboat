@@ -1,4 +1,5 @@
 ﻿using Steamboat.Components;
+using Steamboat.ViewModels;
 using System.Text.RegularExpressions;
 using System.Windows;
 
@@ -12,19 +13,9 @@ namespace Steamboat.Views
         public AddAccount()
         {
             InitializeComponent();
+            DataContext = vm = new AddAccountViewModel();
         }
 
-        private void button_add_Click(object sender, RoutedEventArgs e)
-        {
-            SteamAccount Account = new SteamAccount(tb_username.Text, passwordBox.SecurePassword);
-            ((MainWindow)Application.Current.MainWindow).NewAccount(Account);
-            this.Close();
-        }
-
-        private bool TestString(string str)
-        {
-            // Only allow alphanumerics and spaces
-            return Regex.IsMatch(str, @"^[A-Za-z0-9\s@]*$");
-        }
+        private AddAccountViewModel vm;
     }
 }
