@@ -15,7 +15,6 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Content="Create Account" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Foreground="White" FontFamily="Source Code Pro Light" FontSize="15" />
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Name account :&#xD;&#xA;" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Height="23" Foreground="White" FontFamily="Source Code Pro Light" FontSize="11" />

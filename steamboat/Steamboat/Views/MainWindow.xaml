@@ -21,7 +21,8 @@
                 Background="#FF202129"
                 Foreground="White"
                 ItemsSource="{Binding Accounts}"
-                FontFamily="Source Code Pro" BorderBrush="{x:Null}">
+                FontFamily="Source Code Pro" 
+                BorderBrush="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="0,2">
