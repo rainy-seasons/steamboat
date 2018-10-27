@@ -2,12 +2,10 @@
 using Steamboat.Utils;
 using Steamboat.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Steamboat.Views
 {

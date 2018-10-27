@@ -21,7 +21,7 @@
                 Background="#FF202129"
                 Foreground="White"
                 ItemsSource="{Binding Accounts}"
-                FontFamily="Source Code Pro" 
+                FontFamily="Source Code Pro"
                 BorderBrush="{x:Null}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -32,7 +32,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding Name}" />
-                        <!-- <TextBlock Grid.Column="2" Text="{Binding Username}" /> -->
+                         <!--<TextBlock Grid.Column="2" Text="{Binding Username}" />--> 
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -59,44 +59,44 @@
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <Button Content="kill" 
-                HorizontalAlignment="Right" 
-                Margin="0,0,76,5" 
-                VerticalAlignment="Bottom" 
+        <Button Content="kill"
+                HorizontalAlignment="Right"
+                Margin="0,0,76,5"
+                VerticalAlignment="Bottom"
                 Width="56"
-                RenderTransformOrigin="1,1" 
-                Background="#FF854343" 
-                BorderBrush="{x:Null}" 
+                RenderTransformOrigin="1,1"
+                Background="#FF854343"
+                BorderBrush="{x:Null}"
                 Foreground="White"
-                FontFamily="{DynamicResource SourceCodeProLight}" 
-                Command="{Binding KillProcessCommand}"/>
-        <Label Content="Steam:&#xA;" 
-               HorizontalAlignment="Left" 
-               VerticalAlignment="Bottom" 
-               Height="27" 
-               Width="60" 
+                FontFamily="{DynamicResource SourceCodeProLight}"
+                Command="{Binding KillProcessCommand}" />
+        <Label Content="Steam:&#xA;"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Height="27"
+               Width="60"
                FontFamily="{DynamicResource SourceCodeProLight}"
-               RenderTransformOrigin="0,1" 
-               Background="#00000000" 
-               Foreground="White" Margin="-3,0,0,0"/>
-        <Label Content="{Binding Status}" 
+               RenderTransformOrigin="0,1"
+               Background="#00000000"
+               Foreground="White" Margin="-3,0,0,0" />
+        <Label Content="{Binding Status}"
                Foreground="{Binding Status, Converter={StaticResource ForegroundStatusConverter}}"
-               FontFamily="{DynamicResource SourceCodeProLight}" 
+               FontFamily="{DynamicResource SourceCodeProLight}"
                Margin="43,0,0,0"
-               HorizontalAlignment="Left" 
-               VerticalAlignment="Bottom" 
-               Height="27" 
-               RenderTransformOrigin="0,1"/>
-        <Button Content="add" 
-                HorizontalAlignment="Left" 
-                Margin="178,0,0,5" 
-                VerticalAlignment="Bottom" 
+               HorizontalAlignment="Left"
+               VerticalAlignment="Bottom"
+               Height="27"
+               RenderTransformOrigin="0,1" />
+        <Button Content="add"
+                HorizontalAlignment="Left"
+                Margin="178,0,0,5"
+                VerticalAlignment="Bottom"
                 Width="56"
                 Background="Green"
                 Foreground="White"
                 BorderBrush="{x:Null}"
-                FontFamily="{DynamicResource SourceCodeProLight}" 
+                FontFamily="{DynamicResource SourceCodeProLight}"
                 Command="{Binding ShowAddViewCommand}"
-                CommandParameter="{Binding ElementName=MainView}"/>
+                CommandParameter="{Binding ElementName=MainView}" />
     </Grid>
 </Window>

@@ -2,15 +2,9 @@
 using Steamboat.Components;
 using Steamboat.Utils;
 using Steamboat.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Steamboat.ViewModels
@@ -31,6 +25,7 @@ namespace Steamboat.ViewModels
             get => _accounts;
             set => SetProperty(ref _accounts, value);
         }
+
         public ICommand KillProcessCommand => new Command(KillProcess);
         public ICommand ShowAddViewCommand => new Command<Window>(ShowAdView);
 

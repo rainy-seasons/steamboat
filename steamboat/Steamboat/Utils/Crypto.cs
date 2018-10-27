@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Steamboat.Utils
 {
-    static class Crypto
+    internal static class Crypto
     {
         /// <summary>
         /// Returns a random byte sequence as encryption IV.
@@ -29,7 +29,7 @@ namespace Steamboat.Utils
         /// <param name="plaintext">SecureString of plaintext password.</param>
         /// <param name="entropy">Random byte array used as IV.</param>
         /// <returns>Base64-encoded cipher text.</returns>
-        public static string EncryptString(SecureString plaintext, byte[] entropy, 
+        public static string EncryptString(SecureString plaintext, byte[] entropy,
             DataProtectionScope scope = DataProtectionScope.CurrentUser)
         {
             var encryptedBytes = ProtectedData.Protect(
