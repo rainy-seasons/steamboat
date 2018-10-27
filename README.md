@@ -22,6 +22,7 @@ To Login with any account you should double clicked selected account. It's will 
 ![](images/main.png)
 
 To add an account you should clicked "Add Account" and write your data.
+
 ![](images/add.png)
 
 >To Edit or Remove any account you should click left to selected account and select Edit/Remove option
