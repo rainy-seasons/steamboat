@@ -2,7 +2,7 @@
 
 Tool for switching between steam accounts easily. 
 
-The accounts is store in a local SQLite database with passwords encrypted. 
+The accounts are stored in a local SQLite database with passwords encrypted. 
 
 ## Platform Support
 
@@ -18,14 +18,14 @@ Built with WPF and SQLite with support for
 
 ## How to use
 
-To Login with any account you should double clicked selected account. It's will be open steam app and login automatically.
+To Login with any account you should double clicked selected account. It will open the steam app and login automatically.
 ![](images/main.png)
 
 To add an account you should clicked "Add Account" and write your data.
 
 ![](images/add.png)
 
->To Edit or Remove any account you should click left to selected account and select Edit/Remove option
+>To Edit or Remove any account you should right click an account in the list and select Edit/Remove option
 
 
 ## Disclamer
