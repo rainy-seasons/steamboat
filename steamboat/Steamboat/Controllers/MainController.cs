@@ -2,12 +2,8 @@
 using Steamboat.Components;
 using Steamboat.Utils;
 using Steamboat.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Steamboat.Controllers
 {
@@ -46,6 +42,20 @@ namespace Steamboat.Controllers
         {
             account.EncryptedPassword = Crypto.EncryptString(account.SecurePassword, account.Iv);
             Connection.Update(account);
+
+            /**
+             * Modify Accounts collection.
+             * Reason: ObservableCollection triggers notification to the listeners only when the collection object is modified.
+             * */
+            foreach(var acc in Accounts)
+            {
+                if (acc.Id == account.Id)
+                {
+                    Accounts.Remove(acc);
+                    Accounts.Add(account);
+                    break;
+                }
+            }
         }
 
         public SteamAccount GetAccount(int id)

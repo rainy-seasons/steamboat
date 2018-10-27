@@ -1,6 +1,4 @@
-﻿using Steamboat.Components;
-using Steamboat.ViewModels;
-using System.Text.RegularExpressions;
+﻿using Steamboat.ViewModels;
 using System.Windows;
 
 namespace Steamboat.Views
