@@ -1,3 +1,5 @@
+Steam has added a feature to handle this functionality natively. Therefore this project is no longer needed for easy account switching.
+
 # Steamboat
 
 Tool for switching between steam accounts easily. 
