@@ -20,10 +20,10 @@ Built with WPF and SQLite with support for
 
 ## How to use
 
-To Login with any account you should double clicked selected account. It will open the steam app and login automatically.
+To Login with any account you should double click the desired account. It will open the steam app and login automatically.
 ![](images/main.png)
 
-To add an account you should clicked "Add Account" and write your data.
+To add an account you should click "Add Account" and enter your data.
 
 ![](images/add.png)
 
